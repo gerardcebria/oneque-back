@@ -1,9 +1,9 @@
 // import connection
 import db from "../config/database.js";
   
-// Get All Queues
-export const getQueues = (result) => {
-    db.query("SELECT * FROM queue", (err, results) => {             
+// Get All Users
+export const getUsers = (result) => {
+    db.query("SELECT * FROM user", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -13,9 +13,9 @@ export const getQueues = (result) => {
     });   
 }
   
-// Get Single Queue
-export const getQueueById = (id, result) => {
-    db.query("SELECT * FROM queue WHERE id = ?", [id], (err, results) => {             
+// Get Single User
+export const getUserById = (id, result) => {
+    db.query("SELECT * FROM user WHERE id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -25,9 +25,9 @@ export const getQueueById = (id, result) => {
     });   
 }
   
-// Insert Queue to Database
-export const insertQueue = (data, result) => {
-    db.query("INSERT INTO queue SET ?", [data], (err, results) => {             
+// Insert User to Database
+export const insertUser = (data, result) => {
+    db.query("INSERT INTO user SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,8 +37,8 @@ export const insertQueue = (data, result) => {
     });   
 }
   
-// Update Queue to Database
-export const updateQueueById = (data, id, result) => {
+// Update User to Database
+export const updateUserById = (data, id, result) => {
     db.query("UPDATE colas SET nombre = ?, fecha = ? WHERE id = ?", [data.product_name, data.product_price, id], (err, results) => {             
         if(err) {
             console.log(err);
@@ -49,9 +49,9 @@ export const updateQueueById = (data, id, result) => {
     });   
 }
   
-// Delete Queue to Database
-export const deleteQueueById = (id, result) => {
-    db.query("DELETE FROM queue WHERE id = ?", [id], (err, results) => {             
+// Delete User to Database
+export const deleteUserById = (id, result) => {
+    db.query("DELETE FROM user WHERE id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

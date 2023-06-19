@@ -5,7 +5,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'kuizorik12',
-    database: 'colas'
+    database: 'oneque'
 });
   
 export default db;
