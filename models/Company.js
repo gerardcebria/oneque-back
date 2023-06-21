@@ -2,8 +2,8 @@
 import { query } from "express";
 import db from "../config/database.js";
   
-// Get All Users
-export const getUsers = (result) => {
+// Get All Companies
+export const getCompanies = (result) => {
     db.query("SELECT * FROM user", (err, results) => {             
         if(err) {
             console.log(err);
@@ -14,8 +14,8 @@ export const getUsers = (result) => {
     });   
 }
   
-// Get Single User
-export const getUserById = (id, result) => {
+// Get Single Company
+export const getCompanyById = (id, result) => {
     db.query("SELECT * FROM user WHERE id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
@@ -26,8 +26,8 @@ export const getUserById = (id, result) => {
     });   
 }
   
-// Insert User to Database
-export const insertUser = (data, result) => {
+// Insert Company to Database
+export const insertCompany = (data, result) => {
     const query = "INSERT INTO user (name, lastname, email, phone, queue) VALUES (?, ?, ?, ?, ?)";
     db.query(query, [data.name, data.lastname, data.email, data.phone, data.queue], (err, results) => {             
         if(err) {
@@ -39,8 +39,8 @@ export const insertUser = (data, result) => {
     });   
 }
   
-// Update User to Database
-export const updateUserById = (data, id, result) => {
+// Update Company to Database
+export const updateCompanyById = (data, id, result) => {
     db.query("UPDATE user SET name = ?, lastname = ?, email = ?, phone = ? WHERE id = ?", [data.product_name, data.product_price, id], (err, results) => {             
         if(err) {
             console.log(err);
@@ -51,8 +51,8 @@ export const updateUserById = (data, id, result) => {
     });   
 }
   
-// Delete User to Database
-export const deleteUserById = (id, result) => {
+// Delete Company to Database
+export const deleteCompanyById = (id, result) => {
     db.query("DELETE FROM user WHERE id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
@@ -63,16 +63,3 @@ export const deleteUserById = (id, result) => {
     });   
 }
 
-
-// Get Single User
-export const getUserQuantityById = (id, result) => {
-    console.log(id)
-    db.query("select count(id) from user where queue = ?", [id], (err, results) => {             
-        if(err) {
-            console.log(err);
-            result(err, null);
-        } else {
-            result(null, results[0]);
-        }
-    });   
-}
