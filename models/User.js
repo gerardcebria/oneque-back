@@ -28,8 +28,9 @@ export const getUserById = (id, result) => {
   
 // Insert User to Database
 export const insertUser = (data, result) => {
-    const query = "INSERT INTO user (name, lastname, email, phone, queue) VALUES (?, ?, ?, ?, ?)";
-    db.query(query, [data.name, data.lastname, data.email, data.phone, data.queue], (err, results) => {             
+    const joinedDate = new Date()
+    const query = "INSERT INTO user (name, lastname, email, phone, queue, joinedAt) VALUES (?, ?, ?, ?, ?, ?)";
+    db.query(query, [data.name, data.lastname, data.email, data.phone, data.queue, joinedDate.toISOString().slice(0, 19).replace('T', ' ')], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
