@@ -1,7 +1,7 @@
 // import connection
 import { query } from "express";
 import db from "../config/database.js";
-  
+console.log(import.meta.env)
 // Get All Companies
 export const getCompanies = (result) => {
     db.query("SELECT * FROM user", (err, results) => {             
